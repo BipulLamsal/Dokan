@@ -3,6 +3,7 @@ import React from 'react'
 import App from './App'
 import Shop from './pages/Shop'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Showcase from './components/Showcase'
 
 function Route() {
   const router = createBrowserRouter([
@@ -13,6 +14,10 @@ function Route() {
     {
       path:'/shop',
       element:<Shop/>,
+    },
+    {
+      path:'/shop/:productID',
+      element:<Showcase/>
     }
   ])
 
