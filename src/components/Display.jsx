@@ -3,12 +3,15 @@ import Loading from "../components/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import useAPI from "../utils/useAPI.jsx";
-import { CategoryContext } from "../pages/Shop";
+import { CategoryContext, FilterContext } from "../pages/Shop";
+import filterDisplay from "../utils/filterDisplay";
 
 function Display() {
   const { selected } = useContext(CategoryContext);
+  const { filter } = useContext(FilterContext);
   const { data, loading, error } = useAPI("https://fakestoreapi.com/products");
-  console.log(data);
+  filterDisplay(data, filter);
+
   return (
     <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
       {data.map((item) => {
@@ -27,10 +30,10 @@ function Display() {
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </button>
                 <div className="p-4 flex items-center justify-between">
-                  <h3 class="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semibold text-gray-800">
                     {item.title}
                   </h3>
-                  <span class="text-gray-600">${item.price}</span>
+                  <span className="text-gray-600">${item.price}</span>
                 </div>
               </div>
             ) : selected == "all" ? (
@@ -46,10 +49,10 @@ function Display() {
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </button>
                 <div className="p-4 flex items-center justify-between">
-                  <h3 class="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semibold text-gray-800">
                     {item.title}
                   </h3>
-                  <span class="text-gray-600">${item.price}</span>
+                  <span className="text-gray-600">${item.price}</span>
                 </div>
               </div>
             ) : (

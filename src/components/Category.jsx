@@ -47,11 +47,11 @@ function Category() {
 
   return (
     <div className="category-container">
-    <h1 class="text-xl font-bold mt-5 p-4">Categories</h1>
+    <h1 className="text-xl font-bold mt-5 p-4">Categories</h1>
     <Slider {...settings} className="">
       {cards.map((card) => (
-        <div class="rounded-lg shadow-lg p-4 category-card" onClick={()=> setSelected(card.title.toLocaleLowerCase())}>
-            <h1 class="text-sm font-semibold mt-2 text-white">{card.title}</h1>
+        <div className="rounded-lg shadow-lg p-4 category-card" key={card.id} onClick={()=> setSelected(card.title.toLocaleLowerCase())}>
+            <h1 className="text-sm font-semibold mt-2 text-white">{card.title}</h1>
         </div>
       ))}
     </Slider>
