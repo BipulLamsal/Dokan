@@ -1,13 +1,31 @@
 import React from "react";
-import { useState } from 'react'
+import { useState,useContext } from "react";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CartContext } from "../Router";
 
 function Navigation() {
   const [isMobile, setIsMobile] = useState(false);
+  const {checkout,setCheckout,cart,setCart} = useContext(CartContext)
 
   const handleMobileView = () => {
     console.log(isMobile);
     setIsMobile(!isMobile);
   };
+
+  const handleCheckout = () =>
+  {
+    setCheckout(!checkout)
+  }
+
+  const getItemNumber = () =>
+  {
+    let iNum =0;
+    cart.map((item)=>{
+      iNum += item.quantity;
+    })
+    return iNum
+  }
 
   return (
     <nav className="navbar p-4 relative">
@@ -39,9 +57,12 @@ function Navigation() {
           <div className="hidden lg:flex lg:items-center lg:gap-20 nav-links">
             <a href="#"> Home</a>
             <a href="#">Shop</a>
-            <a href="#" className="btn-shop">
-              <i className="fa-solid fa-bag-shopping"></i>
-            </a>
+            <div className="btn-shop cart-btn relative" onClick={handleCheckout}>
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold absolute top-0 right-0">
+              {getItemNumber()}
+              </div>
+            </div>
           </div>
           <div
             className={
@@ -52,9 +73,11 @@ function Navigation() {
           >
             <a href="#"> Home</a>
             <a href="#">Shop</a>
-            <a href="#" className="btn-shop">
-              <i className="fa-solid fa-bag-shopping"></i>
-            </a>
+
+            <div className="btn-shop cart-btn ">
+              <FontAwesomeIcon icon={faShoppingCart} />
+
+            </div>
           </div>
         </div>
       </div>

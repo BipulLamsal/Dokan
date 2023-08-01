@@ -44,7 +44,6 @@ function Category() {
         ],
       };
       
-
   return (
     <div className="category-container">
     <h1 className="text-xl font-bold mt-5 p-4">Categories</h1>

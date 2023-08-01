@@ -1,11 +1,16 @@
-import React from 'react'
-
+import { createContext,useState } from 'react'
 import App from './App'
 import Shop from './pages/Shop'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Showcase from './components/Showcase'
 
+export const CartContext = createContext()
+
 function Route() {
+  const [checkout, setCheckout] = useState(false);
+  const [cart, setCart] = useState([]);
+  console.log(cart)
+
   const router = createBrowserRouter([
     {
       path:'/',
@@ -13,16 +18,18 @@ function Route() {
     },
     {
       path:'/shop',
-      element:<Shop/>,
+      element:<CartContext.Provider value={{checkout,setCheckout,cart,setCart}}><Shop></Shop></CartContext.Provider>,
     },
     {
       path:'/shop/:productID',
-      element:<Showcase/>
+      element:<CartContext.Provider value={{checkout,setCheckout,cart,setCart}}><Showcase></Showcase></CartContext.Provider>,
     }
   ])
 
   return (
+    
    <RouterProvider router={router}></RouterProvider>
+   
   )
 }
 
