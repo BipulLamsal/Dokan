@@ -21,9 +21,12 @@ function Navigation() {
   const getItemNumber = () =>
   {
     let iNum =0;
-    cart.map((item)=>{
-      iNum += item.quantity;
-    })
+    if (cart.length >=1){
+      cart.map((item)=>{
+        iNum += item.quantity;
+      })
+    }
+
     return iNum
   }
 

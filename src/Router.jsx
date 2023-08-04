@@ -9,7 +9,6 @@ export const CartContext = createContext()
 function Route() {
   const [checkout, setCheckout] = useState(false);
   const [cart, setCart] = useState([]);
-  console.log(cart)
 
   const router = createBrowserRouter([
     {

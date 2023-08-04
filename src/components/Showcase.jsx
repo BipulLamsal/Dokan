@@ -13,6 +13,7 @@ function Showcase() {
   );
 
   const [cartItem, setCartItem] = useState({
+    id:data.id,
     title: data.title,
     price: data.price,
     quantity: 1,
@@ -20,6 +21,7 @@ function Showcase() {
   });
   useEffect(() => {
     setCartItem({
+      id:data.id,
       title: data.title,
       price: data.price,
       quantity: 1,
