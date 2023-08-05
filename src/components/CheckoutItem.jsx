@@ -16,7 +16,7 @@ let newCart = cart.map((item)=>{
 )
 newCart = newCart.filter((item)=>{return item.quantity > 0})
 setCart(newCart)
-
+localStorage.setItem('cartItems',JSON.stringify(newCart))
 
 }
 

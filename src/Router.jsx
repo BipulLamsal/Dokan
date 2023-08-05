@@ -1,4 +1,4 @@
-import { createContext,useState } from 'react'
+import { createContext,useEffect,useState } from 'react'
 import App from './App'
 import Shop from './pages/Shop'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
@@ -9,6 +9,10 @@ export const CartContext = createContext()
 function Route() {
   const [checkout, setCheckout] = useState(false);
   const [cart, setCart] = useState([]);
+  useEffect(()=>
+  {
+    setCart(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [])
+  },[])
 
   const router = createBrowserRouter([
     {

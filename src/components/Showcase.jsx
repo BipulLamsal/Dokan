@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { json, useParams } from "react-router-dom";
 import Navigation from "./Navigation";
 import useAPI from "../utils/useAPI";
 import Checkout from "./Checkout";
@@ -27,6 +27,7 @@ function Showcase() {
       quantity: 1,
       image: data.image,
     });
+
   }, [data]);
 
   const handleClickCart = () => {
@@ -45,6 +46,7 @@ function Showcase() {
         }
       });
       setCart(newcart);
+      localStorage.setItem('cartItems', JSON.stringify(newcart))
       if (check) {
         setCart([...cart, cartItem]);
       }
