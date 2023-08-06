@@ -3,6 +3,7 @@ import { useState,useContext } from "react";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CartContext } from "../Router";
+import { Link } from "react-router-dom";
 
 function Navigation() {
   const [isMobile, setIsMobile] = useState(false);
@@ -34,9 +35,9 @@ function Navigation() {
     <nav className="navbar p-4 relative">
       <div className="md:container mx-auto">
         <div className="flex items-center justify-between md:mx-40">
-          <a href="#" className="text-4xl font-bold logo">
+          <Link to="/" className="text-4xl font-bold logo">
             Dokan.
-          </a>
+          </Link>
           <button
             className="lg:hidden text-white focus:outline-none"
             id="mobile-menu-button"
@@ -58,8 +59,9 @@ function Navigation() {
             </svg>
           </button>
           <div className="hidden lg:flex lg:items-center lg:gap-20 nav-links">
-            <a href="#"> Home</a>
-            <a href="#">Shop</a>
+
+            <Link to="/"> Home</Link>
+            <Link to="/shop">Shop</Link>
             <div className="btn-shop cart-btn relative" onClick={handleCheckout}>
               <FontAwesomeIcon icon={faShoppingCart} />
               <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold absolute top-0 right-0">
