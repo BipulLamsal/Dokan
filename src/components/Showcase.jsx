@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { json, useParams } from "react-router-dom";
+import { json, useParams, Navigate } from "react-router-dom";
 import Navigation from "./Navigation";
 import useAPI from "../utils/useAPI";
 import Checkout from "./Checkout";
@@ -56,6 +56,7 @@ function Showcase() {
   return (
     <>
       <Navigation></Navigation>
+      {error && <Navigate to="/error" />}
       {checkout && <Checkout />}
       <div className="md:mx-40 mx-5">
         <div className="min-w-screen min-h-screen flex items-center p-5 lg:p-10 overflow-hidden relative">
@@ -65,7 +66,7 @@ function Showcase() {
                 <div className="loader border-4 border-t-4 border-gray-400 rounded-full h-12 w-12 animate-spin"></div>
               </div>
             )}
-            <div className="md:flex items-center -mx-10">
+            {!loading && (<div className="md:flex items-center -mx-10">
               <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                 <div className="relative">
                   <img
@@ -102,7 +103,7 @@ function Showcase() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>)}
           </div>
         </div>
       </div>

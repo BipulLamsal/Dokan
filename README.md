@@ -18,6 +18,7 @@ React JS, React Router, Tailwind css
 * Filtering, Sorting
 * Local storage
 * Cart Functionality (Incrementing Number, Decrementing Number)
+* Error Route
 
 
 </details>
@@ -26,8 +27,6 @@ React JS, React Router, Tailwind css
 
 * Searching
 * Filtering Animation
-* Displaying Add to Cart only after being fetched
-* Adding Error Route
 * React Testing Library
 
 

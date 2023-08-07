@@ -4,6 +4,7 @@ import Shop from './pages/Shop'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Showcase from './components/Showcase'
 import Home from './pages/Home'
+import Error from './pages/Error'
 
 export const CartContext = createContext()
 
@@ -17,6 +18,12 @@ function Route() {
 
   const router = createBrowserRouter([
     {
+      path:'*',
+      element: <Error></Error>
+    },
+    
+    {
+      
       path:'/',
       element:<CartContext.Provider value={{checkout,setCheckout,cart,setCart}}><Home></Home></CartContext.Provider>,
     },
@@ -32,7 +39,7 @@ function Route() {
 
   return (
     
-   <RouterProvider router={router}></RouterProvider>
+   <RouterProvider router={router} ></RouterProvider>
    
   )
 }
